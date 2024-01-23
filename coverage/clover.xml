@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1706023447421" clover="3.2.0">
-  <project timestamp="1706023447421" name="All files">
-    <metrics statements="46" coveredstatements="46" conditionals="27" coveredconditionals="27" methods="9" coveredmethods="9" elements="82" coveredelements="82" complexity="0" loc="46" ncloc="46" packages="2" files="7" classes="7"/>
+<coverage generated="1706024541447" clover="3.2.0">
+  <project timestamp="1706024541447" name="All files">
+    <metrics statements="60" coveredstatements="60" conditionals="35" coveredconditionals="35" methods="15" coveredmethods="15" elements="110" coveredelements="110" complexity="0" loc="60" ncloc="60" packages="3" files="9" classes="9"/>
     <package name="Commons.exceptions">
       <metrics statements="22" coveredstatements="22" conditionals="3" coveredconditionals="3" methods="5" coveredmethods="5"/>
       <file name="AuthenticationError.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Commons/exceptions/AuthenticationError.js">
@@ -42,8 +42,19 @@
         <line num="10" count="1" type="stmt"/>
       </file>
     </package>
+    <package name="Domains.users">
+      <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+      <file name="UserRepository.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Domains/users/UserRepository.js">
+        <metrics statements="5" coveredstatements="5" conditionals="0" coveredconditionals="0" methods="4" coveredmethods="4"/>
+        <line num="3" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="11" count="1" type="stmt"/>
+        <line num="15" count="1" type="stmt"/>
+        <line num="19" count="1" type="stmt"/>
+      </file>
+    </package>
     <package name="Domains.users.entities">
-      <metrics statements="24" coveredstatements="24" conditionals="24" coveredconditionals="24" methods="4" coveredmethods="4"/>
+      <metrics statements="33" coveredstatements="33" conditionals="32" coveredconditionals="32" methods="6" coveredmethods="6"/>
       <file name="RegisterUser.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Domains/users/entities/RegisterUser.js">
         <metrics statements="14" coveredstatements="14" conditionals="14" coveredconditionals="14" methods="2" coveredmethods="2"/>
         <line num="3" count="5" type="stmt"/>
@@ -73,6 +84,18 @@
         <line num="17" count="2" type="cond" truecount="5" falsecount="0"/>
         <line num="18" count="1" type="stmt"/>
         <line num="23" count="1" type="stmt"/>
+      </file>
+      <file name="UserLogin.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Domains/users/entities/UserLogin.js">
+        <metrics statements="9" coveredstatements="9" conditionals="8" coveredconditionals="8" methods="2" coveredmethods="2"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="6" count="1" type="stmt"/>
+        <line num="10" count="3" type="stmt"/>
+        <line num="12" count="3" type="cond" truecount="4" falsecount="0"/>
+        <line num="13" count="1" type="stmt"/>
+        <line num="16" count="2" type="cond" truecount="4" falsecount="0"/>
+        <line num="17" count="1" type="stmt"/>
+        <line num="22" count="1" type="stmt"/>
       </file>
     </package>
   </project>
