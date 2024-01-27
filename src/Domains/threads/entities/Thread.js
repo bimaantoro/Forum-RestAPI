@@ -3,6 +3,15 @@ const Comment = require('../../comments/entities/Comment');
 class Thread {
   constructor(payload) {
     this._verifyPayload(payload);
+
+    const {id, title, body, date, username} = payload;
+
+    this.id = id;
+    this.title = title;
+    this.body = body;
+    this.date = date;
+    this.username = username;
+    this.comments = [];
   }
 
   _verifyPayload({
@@ -30,7 +39,7 @@ class Thread {
       throw new Error('THREAD.COMMENTS_CONTAINS_INVALID_MEMBER');
     }
 
-    this.comment = comments;
+    this.comments = comments;
   }
 }
 

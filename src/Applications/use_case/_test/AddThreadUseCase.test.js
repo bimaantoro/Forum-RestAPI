@@ -28,7 +28,7 @@ describe('AddThreadUseCase', () => {
     const expectedAddedThread = new AddedThread({
       id: 'thread-123',
       title: 'dummy title',
-      owner: 'owner',
+      owner: 'user-123',
     });
 
     // Action
