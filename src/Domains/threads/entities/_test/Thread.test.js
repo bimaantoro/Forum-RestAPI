@@ -1,3 +1,4 @@
+const Comment = require('../../../comments/entities/Comment');
 const Thread = require('../Thread');
 
 describe('Thread entities', () => {
@@ -7,7 +8,6 @@ describe('Thread entities', () => {
       id: 'thread-123',
       title: 'dummy title',
       body: 'dummy body',
-      date: 'dummy date',
     };
 
     // Action and Assert
@@ -20,28 +20,91 @@ describe('Thread entities', () => {
       id: 123,
       title: {},
       body: [],
-      date: false,
-      username: true,
+      date: 123,
+      username: 123,
     };
 
     // Action and Assert
     expect(() => new Thread(payload)).toThrowError('THREAD.NOT_MEET_DATA_TYPE_SPECIFICATION');
   });
 
-  // it('should create addedThread object correctly', () => {
-  //   // Arrange
-  //   const payload = {
-  //     id: 'thread-123',
-  //     title: 'dummy title',
-  //     owner: 'user-123',
-  //   };
+  it('should create Thread object correctly', () => {
+    // Arrange
+    const payload = {
+      id: 'thread-123',
+      title: 'dummy title',
+      body: 'dummy body',
+      date: '2021-08-08T07:19:09.775Z',
+      username: 'bimantoro',
+    };
 
-  //   // Action
-  //   const { id, title, owner } = new AddedThread(payload);
+    // Action
+    const {
+      id, title, body, date, username, comments,
+    } = new Thread(payload);
 
-  //   // Assert
-  //   expect(id).toEqual(payload.id);
-  //   expect(title).toEqual(payload.title);
-  //   expect(owner).toEqual(payload.owner);
-  // });
+    // Assert
+    expect(id).toEqual(payload.id);
+    expect(title).toEqual(payload.title);
+    expect(body).toEqual(payload.body);
+    expect(date).toEqual(payload.date);
+    expect(username).toEqual(payload.username);
+    expect(comments).toEqual([]);
+  });
+
+  it('should throw error when comments not contain array', () => {
+    // Arrange
+    const payload = {
+      id: 'thread-123',
+      title: 'dummy title',
+      body: 'dummy body',
+      date: '2021-08-08T07:19:09.775Z',
+      username: 'bimantoro',
+    };
+
+    // Action & Assert
+    expect(() => new Thread(payload).setComments({})).toThrowError('THREAD.COMMENTS_NOT_ARRAY');
+  });
+
+  it('should throw error when comments not contain Comment object', () => {
+    // Arrange
+    const payload = {
+      id: 'thread-123',
+      title: 'dummy title',
+      body: 'dummy body',
+      date: '2021-08-08T07:19:09.775Z',
+      username: 'bimantoro',
+    };
+
+    // Action & Assert
+    expect(() => new Thread(payload).setComments([{}])).toThrowError('THREAD.COMMENTS_CONTAINS_INVALID_MEMBER');
+  });
+
+  it('should set comments correctly', () => {
+    // Arrange
+    const payload = {
+      id: 'thread-123',
+      title: 'dummy title',
+      body: 'dummy body',
+      date: '2021-08-08T07:19:09.775Z',
+      username: 'bimantoro',
+    };
+
+    const thread = new Thread(payload);
+    const comments = [
+      new Comment({
+        id: 'comment-123',
+        username: 'bimantoro',
+        date: '2021-08-08T07:19:09.775Z',
+        content: 'dummy content',
+        isDelete: false,
+      }),
+    ];
+
+    // Action
+    thread.setComments(comments);
+
+    // Assert
+    expect(thread.comments).toEqual(comments);
+  });
 });
