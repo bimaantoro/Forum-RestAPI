@@ -17,10 +17,10 @@ describe('Comment entities', () => {
     // Arrange
     const payload = {
       id: 123,
-      username: true,
+      username: {},
       content: {},
       date: [],
-      isDelete: 'true',
+      isDelete: 'false',
     };
 
     // Action and Assert
@@ -32,14 +32,14 @@ describe('Comment entities', () => {
     const payload = {
       id: 'comment-123',
       username: 'bimantoro',
-      date: 'date-123',
-      content: '**komentar telah dihapus**',
-      isDelete: true,
+      date: '2021-08-08T07:22:33.555Z',
+      content: 'dummy content',
+      isDelete: false,
     };
 
     // Action
     const {
-      id, username, date, content, isDelete,
+      id, username, date, content,
     } = new Comment(payload);
 
     // Assert
@@ -47,6 +47,27 @@ describe('Comment entities', () => {
     expect(username).toEqual(payload.username);
     expect(date).toEqual(payload.date);
     expect(content).toEqual(payload.content);
-    expect(isDelete).toEqual(payload.isDelete);
+  });
+
+  it('should create deleted comment object correctly', () => {
+    // Arrange
+    const payload = {
+      id: 'comment-123',
+      username: 'bimantoro',
+      date: '2021-08-08T07:22:33.555Z',
+      content: 'dummy content',
+      isDelete: true,
+    };
+
+    // Action
+    const {
+      id, username, date, content,
+    } = new Comment(payload);
+
+    // Assert
+    expect(id).toEqual(payload.id);
+    expect(username).toEqual(payload.username);
+    expect(date).toEqual(payload.date);
+    expect(content).toEqual('**komentar telah dihapus**');
   });
 });

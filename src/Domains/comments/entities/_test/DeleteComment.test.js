@@ -5,7 +5,6 @@ describe('DeleteComment entities', () => {
     // Arrange
     const payload = {
       id: 'comment-123',
-      threadId: 'thread-123',
     };
 
     // Action and Assert

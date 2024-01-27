@@ -4,8 +4,8 @@ describe('NewComment entities', () => {
   it('should throw error when payload did not contain needed property', () => {
     // Arrange
     const payload = {
-      threadId: 'thread-123',
       content: 'dummy content',
+      owner: 'user-123',
     };
 
     // Action and Assert
@@ -17,7 +17,7 @@ describe('NewComment entities', () => {
     const payload = {
       threadId: 123,
       content: {},
-      owner: true,
+      owner: {},
     };
 
     // Action and Assert
