@@ -4,7 +4,7 @@ describe('AddedComment entities', () => {
   it('should throw error when payload did not contain needed property', () => {
     // Arrange
     const payload = {
-      id: 'comment-123',
+      content: 'dummy content',
       owner: 'user-123',
     };
 

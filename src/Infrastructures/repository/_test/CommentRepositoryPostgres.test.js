@@ -1,14 +1,15 @@
 const CommentsTableTestHelper = require('../../../../tests/CommentsTableTestHelper');
 const ThreadsTableTestHelper = require('../../../../tests/ThreadsTableTestHelper');
 const UsersTableTestHelper = require('../../../../tests/UsersTableTestHelper');
+const NewComment = require('../../../Domains/comments/entities/NewComment');
 const pool = require('../../database/postgres/pool');
 const CommentRepositoryPostgres = require('../CommentRepositoryPostgres');
 
 describe('CommentRepositoryPostgres', () => {
   afterEach(async () => {
     await CommentsTableTestHelper.cleanTable();
-    await UsersTableTestHelper.cleanTable();
     await ThreadsTableTestHelper.cleanTable();
+    await UsersTableTestHelper.cleanTable();
   });
 
   afterAll(async () => {
@@ -20,11 +21,11 @@ describe('CommentRepositoryPostgres', () => {
       // Arrange
       await UsersTableTestHelper.addUser({ id: 'user-123' });
       await ThreadsTableTestHelper.addThread({ id: 'thread-123' });
-      const newComment = {
+      const newComment = new NewComment({
         threadId: 'thread-123',
         content: 'this is new comment',
         owner: 'user-123',
-      };
+      });
 
       const fakeIdGenerator = () => '123';
       const repository = new CommentRepositoryPostgres(pool, fakeIdGenerator);
@@ -57,16 +58,22 @@ describe('CommentRepositoryPostgres', () => {
 
       const repository = new CommentRepositoryPostgres(pool, {});
 
-      // Action & Assert
-      await expect(repository.isCommentExist('comment-123')).resolves.toBe(true);
+      // Action
+      const isCommentExist = await repository.isCommentExist('comment-123');
+
+      // Assert
+      expect(isCommentExist).toEqual(true);
     });
 
     it('should returh false if comment not exists', async () => {
       // Arrange
       const repository = new CommentRepositoryPostgres(pool, {});
 
+      // Action
+      const isCommentExist = await repository.isCommentExist('comment-123');
+
       // Action & Assert
-      await expect(repository.isCommentExist('comment-123')).resolves.toBe(false);
+      await expect(isCommentExist).toEqual(false);
     });
   });
 
@@ -79,8 +86,11 @@ describe('CommentRepositoryPostgres', () => {
 
       const repository = new CommentRepositoryPostgres(pool, {});
 
-      // Action & Assert
-      await expect(repository.isCommentOwner('comment-123', 'user-123')).resolves.toBe(true);
+      // Action
+      const isCommentOwner = await repository.isCommentOwner('comment-123', 'user-123');
+
+      // Assert
+      expect(isCommentOwner).toEqual(true);
     });
 
     it('should returh false if user is not comment owner', async () => {
@@ -90,8 +100,11 @@ describe('CommentRepositoryPostgres', () => {
       await CommentsTableTestHelper.addComent({ id: 'comment-123', owner: 'user-123' });
       const repository = new CommentRepositoryPostgres(pool, {});
 
-      // Action & Assert
-      await expect(repository.isCommentOwner('comment-123', 'user-456')).resolves.toBe(false);
+      // Action
+      const isCommentOwner = await repository.isCommentOwner('comment-123', 'user-456');
+
+      // Assert
+      expect(isCommentOwner).toEqual(false);
     });
   });
 

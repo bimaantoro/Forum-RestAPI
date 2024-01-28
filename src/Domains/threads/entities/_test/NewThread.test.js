@@ -16,7 +16,7 @@ describe('NewThread entities', () => {
     const payload = {
       title: 123,
       body: {},
-      owner: true,
+      owner: {},
     };
 
     // Action and Assert

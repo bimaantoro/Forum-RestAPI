@@ -18,9 +18,9 @@ class CommentRepositoryPostgres extends CommentRepository {
       values: [id, content, owner, threadId, false, new Date().toISOString()],
     };
 
-    const { rows } = await this._pool.query(query);
+    const result = await this._pool.query(query);
 
-    return new AddedComment({ ...rows[0] });
+    return new AddedComment({ ...result.rows[0] });
   }
 
   async isCommentExist(commentId) {
@@ -40,9 +40,9 @@ class CommentRepositoryPostgres extends CommentRepository {
       values: [commentId],
     };
 
-    const { rows } = await this._pool.query(query);
+    const result = await this._pool.query(query);
 
-    return rows[0].owner === owner;
+    return result.rows[0].owner === owner;
   }
 
   async deleteComment(commentId) {
@@ -60,9 +60,9 @@ class CommentRepositoryPostgres extends CommentRepository {
       values: [threadId],
     };
 
-    const { rows } = await this._pool.query(query);
+    const result = await this._pool.query(query);
 
-    return rows.map((row) => new Comment({
+    return result.rows.map((row) => new Comment({
       ...row,
       isDelete: row.is_delete,
     }));

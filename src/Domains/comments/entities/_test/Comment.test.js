@@ -6,6 +6,7 @@ describe('Comment entities', () => {
     const payload = {
       id: 'comment-123',
       username: 'bimantoro',
+      date: '2021-08-08T07:22:33.555Z',
       content: 'dummy content',
     };
 

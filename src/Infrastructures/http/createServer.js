@@ -11,6 +11,9 @@ const createServer = async (container) => {
   const server = Hapi.server({
     host: process.env.HOST,
     port: process.env.PORT,
+    debug: {
+      request: ['error'],
+    },
   });
 
   // register external plugin

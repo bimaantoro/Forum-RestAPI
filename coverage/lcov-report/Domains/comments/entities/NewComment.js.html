@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>4/10</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">20% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>2/10</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">100% </span>
+                <span class="strong">40% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>10/10</span>
+                <span class='fraction'>4/10</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line high'></div>
+    <div class='status-line low'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -88,45 +88,45 @@
 <a name='L23'></a><a href='#L23'>23</a>
 <a name='L24'></a><a href='#L24'>24</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">5x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">4x</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">1x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">2x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">class NewComment {
   constructor(payload) {
     this._verifyPayload(payload);
 &nbsp;
-    const { threadId, content, owner } = payload;
+    const { threadId, content, owner } = <span class="cstat-no" title="statement not covered" >payload;</span>
 &nbsp;
-    this.threadId = threadId;
-    this.content = content;
-    this.owner = owner;
+<span class="cstat-no" title="statement not covered" >    this.threadId = threadId;</span>
+<span class="cstat-no" title="statement not covered" >    this.content = content;</span>
+<span class="cstat-no" title="statement not covered" >    this.owner = owner;</span>
   }
 &nbsp;
   _verifyPayload({ threadId, content, owner }) {
-    if (!threadId || !content || !owner) {
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!threadId || <span class="branch-1 cbranch-no" title="branch not covered" >!content </span>|| <span class="branch-2 cbranch-no" title="branch not covered" >!owner)</span> {
       throw new Error('NEW_COMMENT.NOT_CONTAIN_NEEDED_PROPERTY');
     }
 &nbsp;
-    if (typeof threadId !== 'string' || typeof content !== 'string' || typeof owner !== 'string') {
-      throw new Error('NEW_COMMENT.NOT_MEET_DATA_TYPE_SPECIFICATION');
+<span class="cstat-no" title="statement not covered" >    if (typeof threadId !== 'string' || typeof content !== 'string' || typeof owner !== 'string') {</span>
+<span class="cstat-no" title="statement not covered" >      throw new Error('NEW_COMMENT.NOT_MEET_DATA_TYPE_SPECIFICATION');</span>
     }
   }
 }
@@ -139,7 +139,7 @@ module.exports = NewComment;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-28T08:36:47.530Z
+                at 2024-01-28T15:50:11.862Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

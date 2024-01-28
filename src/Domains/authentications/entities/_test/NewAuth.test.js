@@ -30,10 +30,11 @@ describe('NewAuth entities', () => {
     };
 
     // Action
-    const { accessToken, refreshToken } = new NewAuth(payload);
+    const newAuth = new NewAuth(payload);
 
     // Assert
-    expect(accessToken).toEqual(payload.accessToken);
-    expect(refreshToken).toEqual(payload.refreshToken);
+    expect(newAuth).toBeInstanceOf(NewAuth);
+    expect(newAuth.accessToken).toEqual(payload.accessToken);
+    expect(newAuth.refreshToken).toEqual(payload.refreshToken);
   });
 });

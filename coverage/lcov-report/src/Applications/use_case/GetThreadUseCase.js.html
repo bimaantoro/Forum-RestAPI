@@ -23,30 +23,30 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>6/9</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">50% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>1/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">0% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Functions</span>
-                <span class='fraction'>0/2</span>
+                <span class='fraction'>2/2</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">11.11% </span>
+                <span class="strong">66.66% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>1/9</span>
+                <span class='fraction'>6/9</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line low'></div>
+    <div class='status-line medium'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -86,36 +86,36 @@
 <a name='L21'></a><a href='#L21'>21</a>
 <a name='L22'></a><a href='#L22'>22</a></td><td class="line-coverage quiet"><span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-yes">1x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-no">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span></td><td class="text"><pre class="prettyprint lang-js">class GetThreadUseCase {
-<span class="fstat-no" title="function not covered" >  co</span>nstructor({ threadRepository, commentRepository }) {
-<span class="cstat-no" title="statement not covered" >    this._threadRepository = threadRepository;</span>
-<span class="cstat-no" title="statement not covered" >    this._commentRepository = commentRepository;</span>
+  constructor({ threadRepository, commentRepository }) {
+    this._threadRepository = threadRepository;
+    this._commentRepository = commentRepository;
   }
 &nbsp;
-<span class="fstat-no" title="function not covered" >  as</span>ync execute(threadId) {
-    const thread = <span class="cstat-no" title="statement not covered" >await this._threadRepository.getThreadById(threadId);</span>
+  async execute(threadId) {
+    const thread = await this._threadRepository.getThreadById(threadId);
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!thread) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new Error('GET_THREAD_USE_CASE.THREAD_NOT_FOUND');</span>
+    <span class="missing-if-branch" title="else path not taken" >E</span>if (!thread) {
+      throw new Error('GET_THREAD_USE_CASE.THREAD_NOT_FOUND');
     }
 &nbsp;
     const comments = <span class="cstat-no" title="statement not covered" >await this._commentRepository.getCommentsByThreadId(threadId);</span>
@@ -133,7 +133,7 @@ module.exports = GetThreadUseCase;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-28T08:34:12.868Z
+                at 2024-01-28T16:20:57.659Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>

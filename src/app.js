@@ -1,5 +1,5 @@
-const container = require('./Infrastuctures/container');
-const createServer = require('./Infrastuctures/http/createServer');
+const container = require('./Infrastructures/container');
+const createServer = require('./Infrastructures/http/createServer');
 
 require('dotenv').config();
 
