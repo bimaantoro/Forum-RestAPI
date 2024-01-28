@@ -30,12 +30,12 @@ describe('CommentRepositoryPostgres', () => {
       const repository = new CommentRepositoryPostgres(pool, fakeIdGenerator);
 
       // Action
-      const addedComment = await repository.addComment(newComment);
+      const { id, content, owner } = await repository.addComment(newComment);
 
       // Assert
-      expect(addedComment.id).toEqual('comment-123');
-      expect(addedComment.content).toEqual(newComment.content);
-      expect(addedComment.owner).toEqual(newComment.owner);
+      expect(id).toEqual('comment-123');
+      expect(content).toEqual(newComment.content);
+      expect(owner).toEqual(newComment.owner);
 
       const foundComment = await CommentsTableTestHelper.findCommentById('comment-123');
       expect(foundComment).toBeDefined();

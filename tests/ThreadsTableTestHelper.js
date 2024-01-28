@@ -1,4 +1,4 @@
-const pool = require('../src/Infrastuctures/database/postgres/pool');
+const pool = require('../src/Infrastructures/database/postgres/pool');
 
 /* istanbul ignore files */
 const ThreadsTableTestHelper = {

@@ -27,12 +27,12 @@ describe('ThreadRepositoryPostgres', () => {
       const repository = new ThreadRepositoryPostgres(pool, fakeIdGenerator);
 
       // Action
-      const addedThread = await repository.addThread(newThread);
+      const { id, title, owner } = await repository.addThread(newThread);
 
       // Assert
-      expect(addedThread.id).toEqual('thread-123');
-      expect(addedThread.title).toEqual(newThread.title);
-      expect(addedThread.owner).toEqual(newThread.owner);
+      expect(id).toEqual('thread-123');
+      expect(title).toEqual(newThread.title);
+      expect(owner).toEqual(newThread.owner);
 
       const foundThread = await ThreadsTableTestHelper.findThreadById('thread-123');
       expect(foundThread).toBeDefined();
@@ -83,15 +83,17 @@ describe('ThreadRepositoryPostgres', () => {
       const repository = new ThreadRepositoryPostgres(pool, {});
 
       // Action
-      const thread = await repository.getThreadById('thread-123');
+      const {
+        id, title, body, date, username, comments,
+      } = await repository.getThreadById('thread-123');
 
       // Assert
-      expect(thread.id).toEqual('thread-123');
-      expect(thread.title).toEqual('title');
-      expect(thread.body).toEqual('body');
-      expect(thread.date).toEqual(expect.any(String));
-      expect(thread.username).toEqual('bimantoro');
-      expect(thread.comments).toEqual([]);
+      expect(id).toEqual('thread-123');
+      expect(title).toEqual('title');
+      expect(body).toEqual('body');
+      expect(date).toEqual(expect.any(String));
+      expect(username).toEqual('bimantoro');
+      expect(comments).toEqual([]);
     });
   });
 });

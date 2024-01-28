@@ -18,8 +18,8 @@ class ThreadRepositoryPostgres extends ThreadRepository {
       values: [id, title, body, owner, new Date().toISOString()],
     };
 
-    const result = await this._pool.query(query);
-    return new AddedThread({ ...result.rows[0] });
+    const { rows } = await this._pool.query(query);
+    return new AddedThread({ ...rows[0] });
   }
 
   async isThreadExist(threadId) {
@@ -39,14 +39,14 @@ class ThreadRepositoryPostgres extends ThreadRepository {
       values: [threadId],
     };
 
-    const result = await this._pool.query(query);
+    const { rowCount, rows } = await this._pool.query(query);
 
-    if (!result.rowCount) {
+    if (!rowCount) {
       return null;
     }
 
     return new Thread({
-      ...result.rows[0],
+      ...rows[0],
     });
   }
 }
