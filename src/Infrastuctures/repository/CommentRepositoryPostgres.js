@@ -1,5 +1,6 @@
 const CommentRepository = require('../../Domains/comments/CommentRepository');
 const AddedComment = require('../../Domains/comments/entities/AddedComment');
+const Comment = require('../../Domains/comments/entities/Comment');
 
 class CommentRepositoryPostgres extends CommentRepository {
   constructor(pool, idGenerator) {
@@ -39,9 +40,9 @@ class CommentRepositoryPostgres extends CommentRepository {
       values: [commentId],
     };
 
-    const result = await this._pool.query(query);
+    const { rows } = await this._pool.query(query);
 
-    return result.rows[0].owner === owner;
+    return rows[0].owner === owner;
   }
 
   async deleteComment(commentId) {
@@ -51,6 +52,20 @@ class CommentRepositoryPostgres extends CommentRepository {
     };
 
     await this._pool.query(query);
+  }
+
+  async getCommentsByThreadId(threadId) {
+    const query = {
+      text: 'SELECT comments.id, comments.content, comments.date, comments.is_delete, users.username FROM comments INNER JOIN users ON comments.owner = users.id WHERE comments.thread_id = $1 ORDER BY comments.date',
+      values: [threadId],
+    };
+
+    const { rows } = await this._pool.query(query);
+
+    return rows.map((row) => new Comment({
+      ...row,
+      isDelete: row.is_delete,
+    }));
   }
 }
 

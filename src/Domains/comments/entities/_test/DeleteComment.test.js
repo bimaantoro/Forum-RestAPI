@@ -15,8 +15,8 @@ describe('DeleteComment entities', () => {
     // Arrange
     const payload = {
       id: 123,
-      threadId: {},
       owner: [],
+      threadId: {},
     };
 
     // Action and Assert
@@ -27,16 +27,16 @@ describe('DeleteComment entities', () => {
     // Arrange
     const payload = {
       id: 'comment-123',
-      threadId: 'thread-123',
       owner: 'user-123',
+      threadId: 'thread-123',
     };
 
     // Action
-    const { id, content, owner } = new DeleteComment(payload);
+    const { id, owner, threadId } = new DeleteComment(payload);
 
     // Assert
     expect(id).toEqual(payload.id);
-    expect(content).toEqual(payload.content);
     expect(owner).toEqual(payload.owner);
+    expect(threadId).toEqual(payload.threadId);
   });
 });

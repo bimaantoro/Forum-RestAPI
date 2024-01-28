@@ -4,7 +4,7 @@ const NewComment = require('../../../Domains/comments/entities/NewComment');
 const ThreadRepository = require('../../../Domains/threads/ThreadRepository');
 const AddCommentUseCase = require('../AddCommentUseCase');
 
-describe('AddCommentUseCasse', () => {
+describe('AddCommentUseCase', () => {
   it('should throw error when thread not found', async () => {
     // Arrange
     const mockThreadRepository = new ThreadRepository();
@@ -65,10 +65,6 @@ describe('AddCommentUseCasse', () => {
     // Assert
     expect(addedComment).toStrictEqual(expectedAddedComment);
     expect(mockThreadRepository.isThreadExist).toBeCalledWith(useCasePayload.threadId);
-    expect(mockCommentRepository.addComment).toBeCalledWith(new NewComment({
-      threadId: useCasePayload.threadId,
-      content: useCasePayload.content,
-      owner: useCasePayload.owner,
-    }));
+    expect(mockCommentRepository.addComment).toBeCalledWith(useCasePayload);
   });
 });
