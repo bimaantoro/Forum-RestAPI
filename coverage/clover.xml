@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1706458857694" clover="3.2.0">
-  <project timestamp="1706458857694" name="All files">
-    <metrics statements="550" coveredstatements="511" conditionals="186" coveredconditionals="178" methods="143" coveredmethods="134" elements="879" coveredelements="823" complexity="0" loc="550" ncloc="550" packages="20" files="56" classes="56"/>
+<coverage generated="1706634769069" clover="3.2.0">
+  <project timestamp="1706634769069" name="All files">
+    <metrics statements="550" coveredstatements="518" conditionals="186" coveredconditionals="182" methods="143" coveredmethods="134" elements="879" coveredelements="834" complexity="0" loc="550" ncloc="550" packages="20" files="56" classes="56"/>
     <package name="src.Applications.security">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <file name="AuthenticationTokenManager.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Applications/security/AuthenticationTokenManager.js">
@@ -20,7 +20,7 @@
       </file>
     </package>
     <package name="src.Applications.use_case">
-      <metrics statements="98" coveredstatements="88" conditionals="22" coveredconditionals="17" methods="21" coveredmethods="21"/>
+      <metrics statements="98" coveredstatements="95" conditionals="22" coveredconditionals="21" methods="21" coveredmethods="21"/>
       <file name="AddCommentUseCase.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Applications/use_case/AddCommentUseCase.js">
         <metrics statements="9" coveredstatements="9" conditionals="2" coveredconditionals="2" methods="2" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
@@ -53,12 +53,12 @@
         <line num="17" count="4" type="stmt"/>
       </file>
       <file name="DeleteAuthenticationUseCase.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Applications/use_case/DeleteAuthenticationUseCase.js">
-        <metrics statements="11" coveredstatements="10" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
+        <metrics statements="11" coveredstatements="11" conditionals="4" coveredconditionals="4" methods="3" coveredmethods="3"/>
         <line num="3" count="3" type="stmt"/>
         <line num="7" count="3" type="stmt"/>
         <line num="8" count="1" type="stmt"/>
         <line num="9" count="1" type="stmt"/>
-        <line num="10" count="0" type="stmt"/>
+        <line num="10" count="1" type="stmt"/>
         <line num="14" count="3" type="stmt"/>
         <line num="15" count="3" type="cond" truecount="2" falsecount="0"/>
         <line num="16" count="1" type="stmt"/>
@@ -67,22 +67,22 @@
         <line num="25" count="1" type="stmt"/>
       </file>
       <file name="DeleteCommentUseCase.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Applications/use_case/DeleteCommentUseCase.js">
-        <metrics statements="15" coveredstatements="9" conditionals="6" coveredconditionals="2" methods="2" coveredmethods="2"/>
+        <metrics statements="15" coveredstatements="15" conditionals="6" coveredconditionals="6" methods="2" coveredmethods="2"/>
         <line num="1" count="4" type="stmt"/>
         <line num="5" count="4" type="stmt"/>
         <line num="6" count="4" type="stmt"/>
         <line num="10" count="4" type="stmt"/>
         <line num="12" count="4" type="stmt"/>
-        <line num="14" count="4" type="cond" truecount="2" falsecount="0"/>
-        <line num="15" count="1" type="stmt"/>
-        <line num="18" count="3" type="stmt"/>
-        <line num="20" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="21" count="0" type="stmt"/>
-        <line num="24" count="0" type="stmt"/>
-        <line num="27" count="0" type="cond" truecount="0" falsecount="2"/>
-        <line num="28" count="0" type="stmt"/>
-        <line num="31" count="0" type="stmt"/>
-        <line num="35" count="4" type="stmt"/>
+        <line num="13" count="4" type="cond" truecount="2" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="3" type="stmt"/>
+        <line num="18" count="3" type="cond" truecount="2" falsecount="0"/>
+        <line num="19" count="1" type="stmt"/>
+        <line num="22" count="2" type="stmt"/>
+        <line num="24" count="2" type="cond" truecount="2" falsecount="0"/>
+        <line num="25" count="1" type="stmt"/>
+        <line num="28" count="1" type="stmt"/>
+        <line num="32" count="4" type="stmt"/>
       </file>
       <file name="GetThreadUseCase.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Applications/use_case/GetThreadUseCase.js">
         <metrics statements="9" coveredstatements="6" conditionals="2" coveredconditionals="1" methods="2" coveredmethods="2"/>

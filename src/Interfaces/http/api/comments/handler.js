@@ -20,7 +20,7 @@ class CommentsHandler {
     });
 
     const response = h.response({
-      status: 'succes',
+      status: 'success',
       message: 'Komentar berhasil ditambahkan',
       data: {
         addedComment,
@@ -35,7 +35,7 @@ class CommentsHandler {
     const { threadId, commentId: id } = request.params;
 
     const useCase = this._container.getInstance(DeleteCommentUseCase.name);
-    await useCase.execute({ commentId: id, owner, threadId });
+    await useCase.execute({ id, owner, threadId });
 
     return {
       status: 'success',

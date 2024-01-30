@@ -126,7 +126,7 @@ describe('CommentRepositoryPostgres', () => {
     });
   });
 
-  describe('getCommentsById', () => {
+  describe('getCommentsByThreadId', () => {
     it('should return comments correctly', async () => {
       // Arrange
       await UsersTableTestHelper.addUser({ id: 'user-123' });

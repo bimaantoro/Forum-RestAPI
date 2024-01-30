@@ -23,16 +23,16 @@
         <div class='clearfix'>
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Statements</span>
-                <span class='fraction'>9/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">33.33% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Branches</span>
-                <span class='fraction'>2/6</span>
+                <span class='fraction'>6/6</span>
             </div>
         
             
@@ -44,9 +44,9 @@
         
             
             <div class='fl pad1y space-right2'>
-                <span class="strong">60% </span>
+                <span class="strong">100% </span>
                 <span class="quiet">Lines</span>
-                <span class='fraction'>9/15</span>
+                <span class='fraction'>15/15</span>
             </div>
         
             
@@ -61,7 +61,7 @@
             </div>
         </template>
     </div>
-    <div class='status-line medium'></div>
+    <div class='status-line high'></div>
     <pre><table class="coverage">
 <tr><td class="line-count quiet"><a name='L1'></a><a href='#L1'>1</a>
 <a name='L2'></a><a href='#L2'>2</a>
@@ -95,10 +95,7 @@
 <a name='L30'></a><a href='#L30'>30</a>
 <a name='L31'></a><a href='#L31'>31</a>
 <a name='L32'></a><a href='#L32'>32</a>
-<a name='L33'></a><a href='#L33'>33</a>
-<a name='L34'></a><a href='#L34'>34</a>
-<a name='L35'></a><a href='#L35'>35</a>
-<a name='L36'></a><a href='#L36'>36</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
+<a name='L33'></a><a href='#L33'>33</a></td><td class="line-coverage quiet"><span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -110,25 +107,22 @@
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">4x</span>
 <span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-yes">3x</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">3x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-neutral">&nbsp;</span>
+<span class="cline-any cline-yes">2x</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
-<span class="cline-any cline-no">&nbsp;</span>
+<span class="cline-any cline-yes">1x</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
 <span class="cline-any cline-neutral">&nbsp;</span>
@@ -145,25 +139,22 @@ class DeleteCommentUseCase {
     const deleteComment = new DeleteComment(useCasePayload);
 &nbsp;
     const isThreadExist = await this._threadRepository.isThreadExist(deleteComment.threadId);
-&nbsp;
     if (!isThreadExist) {
       throw new Error('DELETE_COMMENT_USE_CASE.THREAD_NOT_FOUND');
     }
 &nbsp;
     const isCommentExist = await this._commentRepository.isCommentExist(deleteComment.id);
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!isCommentExist) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new Error('DELETE_COMMENT_USE_CASE.COMMENT_NOT_FOUND');</span>
+    if (!isCommentExist) {
+      throw new Error('DELETE_COMMENT_USE_CASE.COMMENT_NOT_FOUND');
     }
 &nbsp;
-    const isCommentOwner = <span class="cstat-no" title="statement not covered" >await this._commentRepository</span>
+    const isCommentOwner = await this._commentRepository
       .isCommentOwner(deleteComment.id, deleteComment.owner);
-&nbsp;
-<span class="cstat-no" title="statement not covered" >    if (!isCommentOwner) {</span>
-<span class="cstat-no" title="statement not covered" >      throw new Error('DELETE_COMMENT_USE_CASE.COMMENT_NOT_OWNED');</span>
+    if (!isCommentOwner) {
+      throw new Error('DELETE_COMMENT_USE_CASE.COMMENT_NOT_OWNED');
     }
 &nbsp;
-<span class="cstat-no" title="statement not covered" >    return this._commentRepository.deleteComment(deleteComment.id);</span>
+    return this._commentRepository.deleteComment(deleteComment.id);
   }
 }
 &nbsp;
@@ -175,7 +166,7 @@ module.exports = DeleteCommentUseCase;
             <div class='footer quiet pad2 space-top1 center small'>
                 Code coverage generated by
                 <a href="https://istanbul.js.org/" target="_blank" rel="noopener noreferrer">istanbul</a>
-                at 2024-01-28T16:20:57.659Z
+                at 2024-01-30T17:12:49.020Z
             </div>
         <script src="../../../prettify.js"></script>
         <script>
