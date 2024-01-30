@@ -21,10 +21,8 @@ describe('DeleteCommentUseCase', () => {
       threadRepository: mockThreadRepository,
     });
 
-    const expectedError = new Error('DELETE_COMMENT_USE_CASE.THREAD_NOT_FOUND');
-
     // Action & Assert
-    await expect(useCase.execute(useCasePayload)).rejects.toThrowError(expectedError);
+    await expect(useCase.execute(useCasePayload)).rejects.toThrowError('DELETE_COMMENT_USE_CASE.THREAD_NOT_FOUND');
     expect(mockThreadRepository.isThreadExist).toBeCalledWith(useCasePayload.threadId);
   });
 
@@ -46,10 +44,8 @@ describe('DeleteCommentUseCase', () => {
       threadRepository: mockThreadRepository,
     });
 
-    const expectedError = new Error('DELETE_COMMENT_USE_CASE.COMMENT_NOT_FOUND');
-
     // Action & Assert
-    await expect(useCase.execute(useCasePayload)).rejects.toThrowError(expectedError);
+    await expect(useCase.execute(useCasePayload)).rejects.toThrowError('DELETE_COMMENT_USE_CASE.COMMENT_NOT_FOUND');
     expect(mockThreadRepository.isThreadExist).toBeCalledWith(useCasePayload.threadId);
     expect(mockCommentRepository.isCommentExist).toBeCalledWith(useCasePayload.id);
   });
@@ -74,10 +70,8 @@ describe('DeleteCommentUseCase', () => {
       threadRepository: mockThreadRepository,
     });
 
-    const expectedError = new Error('DELETE_COMMENT_USE_CASE.COMMENT_NOT_OWNED');
-
     // Action & Assert
-    await expect(useCase.execute(useCasePayload)).rejects.toThrowError(expectedError);
+    await expect(useCase.execute(useCasePayload)).rejects.toThrowError('DELETE_COMMENT_USE_CASE.COMMENT_NOT_OWNED');
   });
 
   it('should orchestrating the delete comment action correctly', async () => {

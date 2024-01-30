@@ -1,5 +1,5 @@
 const CommentRepository = require('../../../Domains/comments/CommentRepository');
-const NewComment = require('../../../Domains/comments/entities/NewComment');
+const Comment = require('../../../Domains/comments/entities/Comment');
 const ThreadRepository = require('../../../Domains/threads/ThreadRepository');
 const Thread = require('../../../Domains/threads/entities/Thread');
 const GetThreadUseCase = require('../GetThreadUseCase');
@@ -35,7 +35,7 @@ describe('GetThreadUseCase', () => {
     });
 
     const mockReturnComments = [
-      new NewComment({
+      new Comment({
         id: 'comment-123',
         username: 'bimantoro',
         date: new Date().toISOString(),
@@ -55,18 +55,22 @@ describe('GetThreadUseCase', () => {
     });
 
     // Action
-    const thread = await getThreaduseCase.execute('thread-123');
+    const {
+      id, title, body, date, username, comments,
+    } = await getThreaduseCase.execute('thread-123');
 
     // Assert
-    expect(thread.id).toEqual('thread-123');
-    expect(thread.title).toEqual('dummy title');
-    expect(thread.body).toEqual('dummy body');
-    expect(thread.date).toBeDefined();
-    expect(thread.username).toEqual('bimantoro');
-    expect(thread.comments).toHaveLength(1);
-    expect(thread.username[0].id).toEqual('comment-123');
-    expect(thread.username[0].username).toEqual('bimantoro');
-    expect(thread.username[0].content).toEqual('dummy content');
+    expect(id).toEqual('thread-123');
+    expect(title).toEqual('dummy title');
+    expect(body).toEqual('dummy body');
+    expect(date).toBeDefined();
+    expect(username).toEqual('bimantoro');
+    expect(comments).toHaveLength(1);
+    expect(comments[0].id).toEqual('comment-123');
+    expect(comments[0].username).toEqual('bimantoro');
+    expect(comments[0].content).toEqual('dummy content');
+
+    // validate mock
     expect(mockThreadRepository.getThreadById).toBeCalledWith('thread-123');
     expect(mockCommentRepository.getCommentsByThreadId).toBeCalledWith('thread-123');
   });
