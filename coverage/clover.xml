@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<coverage generated="1706713090217" clover="3.2.0">
-  <project timestamp="1706713090217" name="All files">
-    <metrics statements="520" coveredstatements="491" conditionals="175" coveredconditionals="175" methods="134" coveredmethods="125" elements="829" coveredelements="791" complexity="0" loc="520" ncloc="520" packages="19" files="52" classes="52"/>
+<coverage generated="1706717285428" clover="3.2.0">
+  <project timestamp="1706717285428" name="All files">
+    <metrics statements="530" coveredstatements="501" conditionals="185" coveredconditionals="185" methods="136" coveredmethods="127" elements="851" coveredelements="813" complexity="0" loc="530" ncloc="530" packages="20" files="53" classes="53"/>
     <package name="src.Applications.security">
       <metrics statements="8" coveredstatements="8" conditionals="0" coveredconditionals="0" methods="6" coveredmethods="6"/>
       <file name="AuthenticationTokenManager.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Applications/security/AuthenticationTokenManager.js">
@@ -289,6 +289,22 @@
         <line num="19" count="5" type="cond" truecount="5" falsecount="0"/>
         <line num="20" count="1" type="stmt"/>
         <line num="25" count="6" type="stmt"/>
+      </file>
+    </package>
+    <package name="src.Domains.replies.entities">
+      <metrics statements="10" coveredstatements="10" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+      <file name="AddedReply.js" path="/home/bimantoro/Developments/Dicoding/Backend/Expert/Submission/forum-api/src/Domains/replies/entities/AddedReply.js">
+        <metrics statements="10" coveredstatements="10" conditionals="10" coveredconditionals="10" methods="2" coveredmethods="2"/>
+        <line num="3" count="3" type="stmt"/>
+        <line num="5" count="1" type="stmt"/>
+        <line num="7" count="1" type="stmt"/>
+        <line num="8" count="1" type="stmt"/>
+        <line num="9" count="1" type="stmt"/>
+        <line num="13" count="3" type="cond" truecount="5" falsecount="0"/>
+        <line num="14" count="1" type="stmt"/>
+        <line num="17" count="2" type="cond" truecount="5" falsecount="0"/>
+        <line num="18" count="1" type="stmt"/>
+        <line num="23" count="1" type="stmt"/>
       </file>
     </package>
     <package name="src.Domains.threads">
