@@ -15,6 +15,7 @@ describe('/authentications endpoint', () => {
     await AuthenticationsTableTestHelper.cleanTable();
   });
 
+  // POST authentications
   describe('when POST /authentications', () => {
     it('should response 201 and new authentication', async () => {
       // Arrange
@@ -153,11 +154,13 @@ describe('/authentications endpoint', () => {
     });
   });
 
+  // PUT authentications
   describe('when PUT /authentications', () => {
     it('should return 200 and new access token', async () => {
       // Arrange
       const server = await createServer(container);
 
+      // add user
       await server.inject({
         method: 'POST',
         url: '/users',

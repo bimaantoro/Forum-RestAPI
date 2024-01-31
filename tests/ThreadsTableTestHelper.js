@@ -1,7 +1,18 @@
+/* istanbul ignore file */
+
 const pool = require('../src/Infrastructures/database/postgres/pool');
 
-/* istanbul ignore files */
 const ThreadsTableTestHelper = {
+  async findThreadById(id) {
+    const query = {
+      text: 'SELECT * FROM threads WHERE id = $1',
+      values: [id],
+    };
+
+    const { rows } = await pool.query(query);
+    return rows[0];
+  },
+
   async addThread({
     id = 'thread-123', title = 'title', body = 'body', owner = 'user-123',
   }) {
@@ -11,16 +22,6 @@ const ThreadsTableTestHelper = {
     };
 
     await pool.query(query);
-  },
-
-  async findThreadById(id) {
-    const query = {
-      text: 'SELECT * FROM threads WHERE id = $1',
-      values: [id],
-    };
-
-    const { rows } = await pool.query(query);
-    return rows[0];
   },
 
   async cleanTable() {

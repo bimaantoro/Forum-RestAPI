@@ -1,4 +1,4 @@
-/* istanbul ignore files */
+/* istanbul ignore file */
 
 const { Pool } = require('pg');
 
