@@ -62,8 +62,12 @@ describe('Thread entities', () => {
       username: 'bimantoro',
     };
 
+    const thread = new Thread(payload);
+
     // Action & Assert
-    expect(() => new Thread(payload).setComments({})).toThrowError('THREAD.COMMENTS_NOT_ARRAY');
+    expect(() => thread.setComments(
+      {},
+    )).toThrowError('THREAD.COMMENTS_NOT_ARRAY');
   });
 
   it('should throw error when comments not contain Comment object', () => {
@@ -76,8 +80,12 @@ describe('Thread entities', () => {
       username: 'bimantoro',
     };
 
+    const thread = new Thread(payload);
+
     // Action & Assert
-    expect(() => new Thread(payload).setComments([{}])).toThrowError('THREAD.COMMENTS_CONTAINS_INVALID_MEMBER');
+    expect(() => thread.setComments([
+      {},
+    ])).toThrowError('THREAD.COMMENTS_CONTAINS_INVALID_MEMBER');
   });
 
   it('should set comments correctly', () => {
@@ -106,5 +114,10 @@ describe('Thread entities', () => {
 
     // Assert
     expect(thread.comments).toEqual(comments);
+    expect(thread.id).toEqual('thread-123');
+    expect(thread.title).toEqual('dummy title');
+    expect(thread.body).toEqual('dummy body');
+    expect(thread.date).toBeDefined();
+    expect(thread.username).toEqual('bimantoro');
   });
 });

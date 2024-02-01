@@ -128,11 +128,16 @@ describe('CommentRepositoryPostgres', () => {
 
   describe('getCommentsByThreadId', () => {
     it('should return comments correctly', async () => {
+      const wait = (ms) => new Promise((resolve) => {
+        setTimeout(resolve, ms);
+      });
       // Arrange
+
       await UsersTableTestHelper.addUser({ id: 'user-123' });
       await ThreadsTableTestHelper.addThread({ id: 'thread-123' });
-      await CommentsTableTestHelper.addComent({ id: 'comment-123', threadId: 'thread-123' });
-      await CommentsTableTestHelper.addComent({ id: 'comment-456', threadId: 'thread-123' });
+      await CommentsTableTestHelper.addComent({ id: 'comment-123', threadId: 'thread-123', content: 'dummy content' });
+      await wait(250);
+      await CommentsTableTestHelper.addComent({ id: 'comment-456', threadId: 'thread-123', content: 'another dummy content' });
       const repository = new CommentRepositoryPostgres(pool, {});
 
       // Action
@@ -142,7 +147,10 @@ describe('CommentRepositoryPostgres', () => {
       // Assert
       expect(comments).toHaveLength(2);
       expect(firstComment.id).toEqual('comment-123');
+      expect(firstComment.content).toEqual('dummy content');
+
       expect(secondComment.id).toEqual('comment-456');
+      expect(secondComment.content).toEqual('another dummy content');
     });
   });
 });
