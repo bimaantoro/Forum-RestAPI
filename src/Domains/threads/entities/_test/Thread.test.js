@@ -5,7 +5,6 @@ describe('Thread entities', () => {
   it('should throw error when payload did not contain needed property', () => {
     // Arrange
     const payload = {
-      id: 'thread-123',
       title: 'dummy title',
       body: 'dummy body',
     };
@@ -18,8 +17,8 @@ describe('Thread entities', () => {
     // Arrange
     const payload = {
       id: 123,
-      title: {},
-      body: [],
+      title: 123,
+      body: {},
       date: 123,
       username: 123,
     };
@@ -28,7 +27,7 @@ describe('Thread entities', () => {
     expect(() => new Thread(payload)).toThrowError('THREAD.NOT_MEET_DATA_TYPE_SPECIFICATION');
   });
 
-  it('should create Thread object correctly', () => {
+  it('should create thread object correctly', () => {
     // Arrange
     const payload = {
       id: 'thread-123',
@@ -62,8 +61,10 @@ describe('Thread entities', () => {
       username: 'bimantoro',
     };
 
+    const thread = new Thread(payload);
+
     // Action & Assert
-    expect(() => new Thread(payload).setComments({})).toThrowError('THREAD.COMMENTS_NOT_ARRAY');
+    expect(() => thread.setComments({})).toThrowError('THREAD.COMMENTS_NOT_ARRAY');
   });
 
   it('should throw error when comments not contain Comment object', () => {
@@ -76,8 +77,12 @@ describe('Thread entities', () => {
       username: 'bimantoro',
     };
 
+    const thread = new Thread(payload);
+
     // Action & Assert
-    expect(() => new Thread(payload).setComments([{}])).toThrowError('THREAD.COMMENTS_CONTAINS_INVALID_MEMBER');
+    expect(() => thread.setComments([
+      {},
+    ])).toThrowError('THREAD.COMMENTS_CONTAINS_INVALID_MEMBER');
   });
 
   it('should set comments correctly', () => {
@@ -106,5 +111,10 @@ describe('Thread entities', () => {
 
     // Assert
     expect(thread.comments).toEqual(comments);
+    expect(thread.id).toEqual('thread-123');
+    expect(thread.title).toEqual('dummy title');
+    expect(thread.body).toEqual('dummy body');
+    expect(thread.date).toEqual('2021-08-08T07:19:09.775Z');
+    expect(thread.username).toEqual('bimantoro');
   });
 });

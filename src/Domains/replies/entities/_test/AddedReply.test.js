@@ -17,7 +17,7 @@ describe('AddedReply entities', () => {
     const payload = {
       id: 123,
       content: {},
-      owner: [],
+      owner: 123,
     };
 
     // Action & Assert
